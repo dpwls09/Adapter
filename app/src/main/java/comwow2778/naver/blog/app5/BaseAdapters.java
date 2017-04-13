@@ -49,11 +49,11 @@ public class BaseAdapters extends BaseAdapter {
         t1.setText(data.get(position).name);
         t2.setText(data.get(position).call);
         String a = data.get(position).category;
-        if (a == "1") {
+        if (a.equals("1")) {
             i1.setImageResource(R.drawable.ch);
-        } else if (a == "2") {
+        } else if (a.equals("2")) {
             i1.setImageResource(R.drawable.pi);
-        } else if (a == "3") {
+        } else if (a.equals("3")) {
             i1.setImageResource(R.drawable.ha);
         }
         return convertView;
