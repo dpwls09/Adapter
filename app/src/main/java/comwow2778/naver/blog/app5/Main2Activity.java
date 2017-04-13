@@ -49,13 +49,13 @@ public class Main2Activity extends AppCompatActivity {
             String adress = e6.getText().toString();
             String when = DateFormat.getDateInstance().format(new Date());
             if(r1.isChecked()) {
-                category = "CHICKEN";
+                category = "1";
             }
             else if(r2.isChecked()){
-                category = "PIZZA";
+                category = "2";
             }
             else if(r3.isChecked()){
-                category = "HAMBURGER";
+                category = "3";
             }
             list i= new list(name,call,menu,adress,when,category);
             Intent intent1 = new Intent(this, MainActivity.class);

@@ -63,13 +63,12 @@ public class Main3Activity extends AppCompatActivity {
         }
 
     }
-
     public void image(String a) {
-        if (a == "CHICKEN") {
+        if (a == "1") {
             i1.setImageResource(R.drawable.ch);
-        } else if (a == "PIZZA") {
+        } else if (a == "2") {
             i1.setImageResource(R.drawable.pi);
-        } else if (a == "HAMBURGER") {
+        } else if (a == "3") {
             i1.setImageResource(R.drawable.ha);
         }
     }

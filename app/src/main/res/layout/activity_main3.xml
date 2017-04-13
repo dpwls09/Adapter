@@ -41,12 +41,14 @@
             android:textStyle="bold" />
         </TableRow>
         <TableRow android:padding="3dp">
+
             <ImageView
                 android:id="@+id/i1"
                 android:layout_width="50dp"
                 android:layout_height="68dp"
                 android:layout_weight="1"
                 android:src="@drawable/ch" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

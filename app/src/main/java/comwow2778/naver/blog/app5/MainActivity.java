@@ -13,31 +13,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.jar.Manifest;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView t1;
     ListView l1;
     final int request_code_1 = 1;
     final int request_code_2 = 2;
     ArrayList<list> information = new ArrayList<list>();
-    ArrayAdapter<String> list;
-    int count;
+    BaseAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        t1 = (TextView)findViewById(R.id.t1);
         l1 = (ListView)findViewById(R.id.listview);
-        list = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-        l1.setAdapter(list);
+        adapter = new BaseAdapters(information,this);
+        l1.setAdapter(adapter);
         list_longorder();
         list_order();
 
@@ -50,10 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 dlg.setTitle("삭제확인").setNegativeButton("취소",null).setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        count--;
-                        t1.setText("맛집 리스트" + count + "개");
-                        list.remove(information.get(position).name);
-                        list.notifyDataSetChanged();
+                        information.remove(information.get(position));
+                        adapter.notifyDataSetChanged();
                         Snackbar.make(getWindow().getDecorView().getRootView(),"삭제되었습니다.",Snackbar.LENGTH_SHORT).show();
                     }
                 }).show();
@@ -78,20 +77,46 @@ public class MainActivity extends AppCompatActivity {
             Intent intent2 = new Intent(this, Main2Activity.class);
             startActivityForResult(intent2,request_code_1);
         }
+        else if(v.getId() == R.id.bsort){
+            sortname();
+        }
+        else if(v.getId() == R.id.bsort2){
+            sortcategory();
+        }
+        else if(v.getId() == R.id.bchoice){
+            choice();
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == request_code_1 && resultCode == RESULT_OK) {
-            count++;
-            t1.setText("맛집 리스트" + count + "개");
             list i1 = data.getParcelableExtra("name");
             information.add(i1);
-            list.add(i1.name);
-            list.notifyDataSetChanged();
+            adapter.notifyDataSetChanged();
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void sortname(){
+        Comparator<list> sortname = new Comparator<list>() {
+            @Override
+            public int compare(list o1, list o2) {
+                return o1.name.compareToIgnoreCase(o2.name);
+            }
+        };
+        Collections.sort(information, sortname);
+    }
+    public void sortcategory(){
+        Comparator<list> sortcategory = new Comparator<list>() {
+            @Override
+            public int compare(list o1, list o2) {
+                return o1.category.compareToIgnoreCase(o2.category);
+            }
+        };
 
+    }
+    public void choice(){
+
+    }
 }
