@@ -37,14 +37,14 @@ public class Main3Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         list = intent.getParcelableExtra("act3");
-        t2.setText(list.name);
+        t2.setText(list.getName());
         t3.setText(list.menu[0]);
         t4.setText(list.menu[1]);
         t5.setText(list.menu[2]);
-        t6.setText(list.call);
-        t7.setText(list.adress);
-        t8.setText(list.when);
-        image(list.category);
+        t6.setText(list.getCall());
+        t7.setText(list.getAdress());
+        t8.setText(list.getWhen());
+        image(list.getCategory());
     }
 
     public void onmyclick(View v) {
@@ -54,10 +54,10 @@ public class Main3Activity extends AppCompatActivity {
             finish();
         } else {
             if (v.getId() == R.id.ib1) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + list.call));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + list.getCall()));
                 startActivity(intent);
             } else if (v.getId() == R.id.ib2) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://" + list.adress));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://" + list.getAdress()));
                 startActivity(intent);
             }
         }

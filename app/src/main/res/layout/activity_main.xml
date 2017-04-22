@@ -28,21 +28,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="이름순" />
+            android:text="이름순"
+            android:onClick="onmyclick"/>
 
         <Button
             android:id="@+id/bsort2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="종류별" />
+            android:text="종류별"
+            android:onClick="onmyclick"/>
 
         <Button
             android:id="@+id/bchoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="선택" />
+            android:text="선택"
+            android:onClick="onmyclick"/>
     </LinearLayout>
 
 
@@ -54,14 +57,15 @@
         >
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/et1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:drawableLeft="@android:drawable/ic_lock_lock"
             android:ems="20"
             android:hint="검색할 맛집을 넣으세요."
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textFilterEnabled="true"/>
     </LinearLayout>
 
     <ListView

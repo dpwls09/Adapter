@@ -2,18 +2,81 @@ package comwow2778.naver.blog.app5;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.view.View;
+import android.widget.CheckBox;
 
 /**
  * Created by seon on 2017-04-06.
  */
 
 public class list implements Parcelable{
-    String name = "";
-    String call = "";
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCall() {
+        return call;
+    }
+
+    public void setCall(String call) {
+        this.call = call;
+    }
+
+    public String[] getMenu(int i) {
+        return menu;
+    }
+
+    public void setMenu(String[] menu) {
+        this.menu = menu;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getWhen() {
+        return when;
+    }
+
+    public void setWhen(String when) {
+        this.when = when;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
+    }
+
+    public boolean IsSelected(){return this.selected;}
+
+
+    private String name = "";
+    private String call = "";
     String menu[] = new String[3];
-    String adress = "";
-    String when = "";
-    String category = "";
+    private String adress = "";
+    private String when = "";
+    private String category = "";
+    private CheckBox checkBox;
+    public boolean selected;
     public list(String name, String call, String menu[], String adress, String when, String category){
         this.name = name;
         this.call = call;
@@ -21,6 +84,7 @@ public class list implements Parcelable{
         this.adress = adress;
         this.when = when;
         this.category = category;
+        this.selected = false;
     }
 
     protected list(Parcel in) {
